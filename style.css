@@ -3,34 +3,38 @@ body {
   font-family: 'Tahoma', sans-serif;
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #38bdf8, #3b82f6, #60a5fa, #93c5fd);
-  background-size: 400% 400%;
-  animation: gradientMove 12s ease infinite;
+  background: linear-gradient(to bottom, #38bdf8, #0ea5e9); /* ألوان زرقاء مبهجة */
   color: white;
   text-align: center;
   position: relative;
   overflow: hidden;
 }
 
-@keyframes gradientMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1600&auto=format&fit=crop') 
+              no-repeat center center/cover;
+  opacity: 0.3;
+  filter: brightness(0.8);
 }
 
-/* ساعة رملية */
+/* ساعة رملية كبيرة كعنصر جمالي */
 .hourglass {
-  width: 40px;
-  height: 70px;
-  border: 3px solid #fff;
-  border-radius: 6px;
-  position: relative;
-  margin: 1.5rem auto;
-  box-sizing: border-box;
-  animation: spin 3s linear infinite;
+  position: absolute;
+  top: 20px;   /* مسافة من الأعلى */
+  right: 20px; /* مسافة من اليمين */
+  width: 120px;
+  height: 200px;
+  border: 6px solid rgba(255,255,255,0.6);
+  border-radius: 10px;
+  opacity: 0.5;       /* شفافية حتى لا تزعج */
+  pointer-events: none; /* ما تأثر على الضغط */
+  animation: spin 10s linear infinite;
+  z-index: 1;
 }
 
 .hourglass::before,
@@ -39,23 +43,23 @@ body {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  border-left: 18px solid transparent;
-  border-right: 18px solid transparent;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
 }
 
 .hourglass::before {
-  top: 5px;
-  border-bottom: 25px solid #facc15; /* أصفر */
+  top: 15px;
+  border-bottom: 70px solid #facc15; /* أصفر مثل الرمل */
 }
 
 .hourglass::after {
-  bottom: 5px;
-  border-top: 25px solid #facc15; /* أصفر */
+  bottom: 15px;
+  border-top: 70px solid #facc15;
 }
 
+/* دوران بطيء للزينة */
 @keyframes spin {
   0% { transform: rotate(0deg); }
-  50% { transform: rotate(180deg); }
   100% { transform: rotate(360deg); }
 }
 
@@ -150,7 +154,6 @@ h1 {
   box-shadow: 0 4px 12px rgba(0,0,0,0.25);
 }
 
-/* زر الاستفسار */
 .cta .details {
   background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05));
   color: white;
@@ -162,7 +165,6 @@ h1 {
   transform: translateY(-2px);
 }
 
-/* زر الاشتراك */
 .cta .register {
   background: linear-gradient(135deg, #ffffff, #e0e7ff);
   color: #1e3a8a;
